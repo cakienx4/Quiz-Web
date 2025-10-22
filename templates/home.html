@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../static/main.css">
 </head>
 <body>
-    
+    <div class="home-container">
+        <h1>Chào mừng bạn đến với WEB QUIZ!</h1>
+        <div style="display: flex; justify-content: space-evenly;">
+            <form action="/answer_question">
+                <button type="submit"><b>Bắt đầu trả lời câu hỏi!</b></button>
+            </form>
+            <div class="kiem-tra-admin">
+                <p>Bạn là admin? Điền mã admin: </p>
+                <form action="/check_admin" method="POST">
+                    <input type="password" name="ma-admin" id="ma-admin">
+                    <button type="submit">Gửi mã</button>
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
 </body>
 </html>

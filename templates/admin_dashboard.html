@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+    <div class="home-container">
+        <h1>Chào admin! Bạn muốn chỉnh sửa gì?</h1>
+        <div style="display: flex; justify-content: space-evenly; gap: 10px;">
+            <form action="/add_question">
+                <button type="submit"><b>Thêm câu hỏi</b></button>
+            </form>
+            <form action="/delete_question">
+                <button type="submit"><b>Xóa câu hỏi</b></button>
+            </form>
+            <form action="/">
+                <button type="submit"><b>Đăng xuất và quay lại trang chủ</b></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

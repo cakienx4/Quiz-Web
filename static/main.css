@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #3CB371;
+}
+.home-container {
+    text-align: center;
+    padding: 20px;
+    border: black 5px solid;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    background-color: white;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer; /* Thêm con trỏ pointer khi hover vào nút */
+    background-color: blue;
+    color: white;
+}
+button:hover {
+    background-color: darkblue;
+}
+.kiem-tra-admin button{
+    background-color: red;
+}
+.kiem-tra-admin button:hover {
+    background-color: darkred;
+}
+
+a {
+    text-decoration: none;
+    font-size: large;
+}
