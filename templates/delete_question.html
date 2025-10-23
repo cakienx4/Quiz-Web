@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Xóa câu hỏi</title>
+    <link rel="stylesheet" href="../static/main.css">
 </head>
 <body>
-    
+    <div style="display: flex; justify-content: space-between;">
+        <h1>Danh sách câu hỏi</h1>
+        <form action="/admin_dashboard">
+            <button type="submit"><b>Quay lại trang admin</b></button>
+        </form>
+    </div>
+    <form method="POST">
+        <ul>
+            {% for i, question in enumerate(questions) %}
+                <li>
+                    {{ question.question_text }}
+                    <button type="submit" name="question_index" value="{{ i }}">Xóa</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+
 </body>
 </html>

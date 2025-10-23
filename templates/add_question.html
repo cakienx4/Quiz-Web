@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thêm câu hỏi</title>
+    <link rel="stylesheet" href="../static/main.css">
+    <style>
+        body {
+            background-color: darkgreen;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="home-container">
+        <h1>Thêm câu hỏi mới</h1>
+        <form action="/add_question" method="POST" style="display: flex; flex-direction: column; font-size:25px;">
+            <label for="question">Câu hỏi:</label>
+            <div style="display: flex; justify-content: center;margin-bottom: 20px;">
+                <input type="text" id="question" name="question" required style="width: 50%; font-size: 18px; padding: 8px;">
+            </div>
+            <div class="form-add-question">
+                <div class="half-left">
+                    <label for="option_a">Phương án A:</label>
+                    <input type="text" id="option_a" name="option_a" required>
+
+                    <label for="option_c">Phương án C:</label>
+                    <input type="text" id="option_c" name="option_c" required>
+
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                        <label for="correct_answer">Phương án đúng (A, B, C, hoặc D):</label>
+                        <select name="correct_answer" required>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="half-right">
+                    <label for="option_b">Phương án B:</label>
+                    <input type="text" id="option_b" name="option_b" required>
+
+                    <label for="option_d">Phương án D:</label>
+                    <input type="text" id="option_d" name="option_d" required>
+
+                    <button type="submit"><b>Thêm câu hỏi</b></button>
+                </div>
+            </div>
+        </form>
+        <form action="/admin_dashboard"  class="return-admin-page">
+            <button type="submit" style="margin-top: 20px;"><b>Quay lại trang admin</b></button>    
+        </form>
+    </div>
 </body>
 </html>

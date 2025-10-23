@@ -30,8 +30,34 @@ button:hover {
 .kiem-tra-admin button:hover {
     background-color: darkred;
 }
+.return-admin-page button{
+    background-color: red;
+}
 
+.return-admin-page button:hover{
+    background-color: darkred;
+}
 a {
     text-decoration: none;
     font-size: large;
+}
+
+.form-add-question{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; 
+}
+.half-left,
+.half-right {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* khoảng cách giữa label và input */
+}
+
+.half-left input[type="text"], select,
+.half-right input[type="text"], select {
+    font-size: 18px;
+    padding: 8px;
 }
