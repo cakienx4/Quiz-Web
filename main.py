@@ -1,5 +1,7 @@
 from flask import Flask, redirect, request, render_template, url_for
 import json, os
+import ast
+
 app = Flask(__name__)
 
 data_file = 'data/questions_data.json'
@@ -46,19 +48,19 @@ def admin_dashboard():
 def add_question():
     if request.method == 'POST':
         question = request.form['question']
-        option_A = request.form['option_A']
-        option_B = request.form['option_B']
-        option_C = request.form['option_C']
-        option_D = request.form['option_D']
+        option_a = request.form['option_a']
+        option_b = request.form['option_b']
+        option_c = request.form['option_c']
+        option_d = request.form['option_d']
         correct_answer = request.form['correct_answer']
 
         new_question = {
             'question': question,
             'options': {
-                'A': option_A,
-                'B': option_B,
-                'C': option_C,
-                'D': option_D
+                'A': option_a,
+                'B': option_b,
+                'C': option_c,
+                'D': option_d
             },
             'correct_answer': correct_answer
         }
@@ -73,17 +75,31 @@ def add_question():
 def delete_question():
     if not questions:
         return render_template('none_question_adminType.html')
+
     if request.method == 'POST':
-        index = int(request.form['question_index'])
-        if 0 <= index < len(questions):
-            questions.pop(index)
-            save_questions(questions)
-            return redirect(url_for('admin_dashboard'))
-        else:
-            return "Chỉ số câu hỏi không hợp lệ!", 400
+        index = request.form.get('question_index')
+        if index is not None:
+            index = int(index)
+            if 0 <= index < len(questions):
+                del questions[index]
+                save_questions(questions)
+        return redirect(url_for('delete_question'))
+    
+    return render_template('delete_question.html', questions=questions)
 
+@app.route('/result')
+def result():
+    answers = ast.literal_eval(request.args.get('answers'))
+    # ép key về int
+    answers = {int(k): v for k, v in answers.items()}
 
-    return render_template('delete_question.html')
+    correct = 0
+    for i, q in enumerate(questions):
+        if answers.get(i) == q['correct_answer']:
+            correct += 1
+
+    correct = round((correct / len(questions)) * 100, 2)
+    return render_template('result.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

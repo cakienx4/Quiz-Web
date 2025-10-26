@@ -1,28 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xóa câu hỏi</title>
-    <link rel="stylesheet" href="../static/main.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: darkgreen;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;              /* chiếm toàn màn hình */
+            overflow-y: auto;           /* cho phép cuộn dọc */
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .home-container {
+            position: sticky;           /* cố định ở đầu khi cuộn */
+            top: 0;
+            width: 100%;
+            background-color: #004d00;  /* đậm hơn cho nổi bật */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #fff;
+            z-index: 10;
+        }
+
+        .home-container h1 {
+            margin: 0;
+        }
+
+        .question-list {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .question-box {
+            background-color: white;
+            color: black;
+            font-size: larger;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .question-box ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .question-box button {
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .question-box button:hover {
+            background-color: #ff1a1a;
+        }
+
+        button.back-btn {
+            background-color: red;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer; /* Thêm con trỏ pointer khi hover vào nút */
+            color: white;
+        }
+
+        button.back-btn:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: space-between;">
+    <div class="home-container">
         <h1>Danh sách câu hỏi</h1>
         <form action="/admin_dashboard">
-            <button type="submit"><b>Quay lại trang admin</b></button>
+            <button type="submit" class="back-btn">Quay lại trang admin</button>
         </form>
     </div>
-    <form method="POST">
-        <ul>
-            {% for i, question in enumerate(questions) %}
-                <li>
-                    {{ question.question_text }}
-                    <button type="submit" name="question_index" value="{{ i }}">Xóa</button>
-                </li>
-            {% endfor %}
-        </ul>
-    </form>
 
+    <form method="POST" class="question-list">
+        {% for question in questions %}
+        <div class="question-box">
+            <b>Câu {{ loop.index }}:</b> {{ question.question }}<br>
+            <ul>
+                <li>A. {{ question.options.A }}</li>
+                <li>B. {{ question.options.B }}</li>
+                <li>C. {{ question.options.C }}</li>
+                <li>D. {{ question.options.D }}</li>
+                <li><b>Đáp án đúng:</b> {{ question.correct_answer }}</li>
+            </ul>
+            <button type="submit" name="question_index" value="{{ loop.index0 }}">Xóa</button>
+        </div>
+        {% endfor %}
+    </form>
 </body>
 </html>

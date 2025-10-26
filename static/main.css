@@ -17,6 +17,8 @@ body {
 button {
     padding: 10px 20px;
     font-size: 16px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer; /* Thêm con trỏ pointer khi hover vào nút */
     background-color: blue;
     color: white;
@@ -60,4 +62,25 @@ a {
 .half-right input[type="text"], select {
     font-size: 18px;
     padding: 8px;
+}
+
+.question-box {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 20px auto;
+    width: 70%;
+    text-align: left;
+}
+
+.answer.green {
+    color: green;
+    font-weight: bold;
+}
+
+.answer.red {
+    color: red;
+    font-weight: bold;
 }
