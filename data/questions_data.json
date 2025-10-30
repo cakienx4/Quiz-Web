@@ -1,1 +1,102 @@
-[]
+[
+    {
+        "question": "1 + 1 = ?",
+        "options": {
+            "A": "1",
+            "B": "3",
+            "C": "2",
+            "D": "4"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question": "Ai là tác giả của bài hát 'Nàng thơ'",
+        "options": {
+            "A": "Sơn Tùng M-TP",
+            "B": "Hoàng Dũng",
+            "C": "Chu Anh Kiên",
+            "D": "Cristiano Messi"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question": "Từ nào sau đây là tính từ?",
+        "options": {
+            "A": "phụ nữ",
+            "B": "siuuuuuuu",
+            "C": "liêm khiết",
+            "D": "vấp cỏ"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question": "Sau sát nhập, Việt Nam có bao nhiêu tỉnh/thành?",
+        "options": {
+            "A": "63",
+            "B": "36",
+            "C": "34",
+            "D": "18"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question": "'Con tàu không thể chìm' - Titanic vì sao gặp nạn?",
+        "options": {
+            "A": "Do đâm vào một con tàu khác",
+            "B": "Do đâm vào tảng băng trôi",
+            "C": "Có người béo đến mức đứng một bên tàu gây đổ tàu",
+            "D": "Do người lái tàu bốc đầu bị xòe bánh"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question": "Đâu là tên tiểu thuyết nổi tiếng của nhà văn Nguyễn Nhật Ánh?",
+        "options": {
+            "A": "Tôi thấy hoa vàng trên cỏ xanh",
+            "B": "Tôi thấy răng vàng trên mỏ anh",
+            "C": "Tôi thấy barca đang mua tài",
+            "D": "Tôi thấy 7 cỏ đang hôi pen"
+        },
+        "correct_answer": "A"
+    },
+    {
+        "question": "Đội bóng nào là 'Niềm tự hào của London' ?",
+        "options": {
+            "A": "Manchester United",
+            "B": "Liverpool",
+            "C": "Chelsea",
+            "D": "Phấn đào"
+        },
+        "correct_answer": "C"
+    },
+    {
+        "question": "Ca sĩ nào nổi tiếng nhất Việt Nam?",
+        "options": {
+            "A": "Jack",
+            "B": "Soobin Hoàng Sơn",
+            "C": "Kiên Chu",
+            "D": "Sơn Tùng M-TP"
+        },
+        "correct_answer": "D"
+    },
+    {
+        "question": "Anh nào chất phác thật thà / Đè tem dán nhãn khô gà của tao?",
+        "options": {
+            "A": "Anh Triết và Già",
+            "B": "Anh Mộ Xum Xuê",
+            "C": "SV tú sela",
+            "D": "Giáo chủ Sabeo"
+        },
+        "correct_answer": "B"
+    },
+    {
+        "question": "Ai được biết đến là 'Ông hoàng nhạc Pop'?",
+        "options": {
+            "A": "Elvis Presley",
+            "B": "Freddie Mercury",
+            "C": "Elton John",
+            "D": "Michael Jackson"
+        },
+        "correct_answer": "D"
+    }
+]

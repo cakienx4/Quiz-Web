@@ -1,32 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trả lời</title>
+    <title>Trả lời câu hỏi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #3CB371;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;              /* chiếm toàn màn hình */
+            overflow-y: auto;           /* cho phép cuộn dọc */
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .home-container {
+            position: sticky;           /* cố định ở đầu khi cuộn */
+            top: 0;
+            width: 100%;
+            background-color: #017d01;  /* đậm hơn cho nổi bật */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #fff;
+            z-index: 10;
+        }
+
+        .home-container h1 {
+            margin: 0;
+        }
+
+        .question-list {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .question-box {
+            background-color: white;
+            color: black;
+            font-size: larger;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .question-box ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer; /* Thêm con trỏ pointer khi hover vào nút */
+            background-color: blue;
+            color: white;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-<h2>Trả lời câu hỏi</h2>
-    <form method="POST" action="/result">
+    <div class="home-container">
+        <h1>Trả lời câu hỏi</h1>
+        <form action="/">
+            <button type="submit" class="back-btn">Quay lại trang chủ</button>
+        </form>
+        
+    </div>
+    <form method="POST" action="/answer_question">
         {% for q in questions %}
             {% set i = loop.index0 %}
-        <div class="question-box">
-            <h3>{{ q.questions }}</h3>
-            <div class="answers">
-                {% for ans in q.answers %}
-                    {% set label = ['A','B','C','D'][loop.index0] %}
-                    <label>
-                        <input type="radio" name="q{{ i }}" value="{{ label }}" required>
-                        {{ label }}. {{ ans }}
-                    </label><br>
-                {% endfor %}
+            <div class="question-box">
+                <h3>Câu {{ loop.index }}: {{ q.question }}</h3>
+                <div class="answers">
+                    {% for label, option in q.options.items() %}
+                        <label>
+                            <input type="radio" name="question_{{ i }}" value="{{ label }}" required>
+                            {{ label }}. {{ option }}
+                        </label><br>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
         {% endfor %}
-        <br>
         <button type="submit">Nộp bài</button>
     </form>
-
-    <a href="/">⬅ Quay lại trang chủ</a>
 </body>
 </html>

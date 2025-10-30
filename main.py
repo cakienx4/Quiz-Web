@@ -30,7 +30,7 @@ def answer_question():
         answer = {}
         for i, _ in enumerate(questions):
             answer[i] = request.form.get(f'question_{i}')
-        return render_template('result.html', answers = str(answer))
+        return redirect(url_for('result', answers=str(answer)))
     return render_template('answer_question.html', questions=questions)
 
 @app.route('/check_admin', methods=['POST'])
@@ -90,7 +90,6 @@ def delete_question():
 @app.route('/result')
 def result():
     answers = ast.literal_eval(request.args.get('answers'))
-    # ép key về int
     answers = {int(k): v for k, v in answers.items()}
 
     correct = 0
@@ -99,7 +98,12 @@ def result():
             correct += 1
 
     correct = round((correct / len(questions)) * 100, 2)
-    return render_template('result.html')
+    return render_template(
+        'result.html',
+        questions=questions,
+        answers=answers,
+        correct=correct
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)

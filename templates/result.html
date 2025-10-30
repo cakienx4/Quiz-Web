@@ -1,11 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kết quả</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #3CB371;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .home-container {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #017d01;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #fff;
+            z-index: 10;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .question-list {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .question-box {
+            background-color: white;
+            color: black;
+            font-size: larger;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .answer {
+            margin: 5px 0;
+        }
+
+        .green {
+            color: green;
+            font-weight: bold;
+        }
+
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="home-container">
+        <h1>Kết quả</h1>
+        <form action="/">
+            <button type="submit">Quay lại trang chủ</button>
+        </form>
+    </div>
+
+    <h2>Kết quả của bạn: {{ correct }}%</h2>
+
+    <div class="question-list">
+        {% for q in questions %}
+            {% set i = loop.index0 %}
+            <div class="question-box">
+                <h3>Câu {{ loop.index }}: {{ q.question }}</h3>
+                {% for label, option in q.options.items() %}
+                    {% if label == q.correct_answer %}
+                        <p class="answer green">{{ label }}. {{ option }}</p>
+                    {% elif label == answers.get(i) %}
+                        <p class="answer red">{{ label }}. {{ option }}</p>
+                    {% else %}
+                        <p class="answer">{{ label }}. {{ option }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
